@@ -1,0 +1,15 @@
+package graphics;
+
+@SuppressWarnings("serial")
+public class DoctorInbox extends Inbox {
+
+	public DoctorInbox() {
+
+	}
+
+	@Override
+	protected void make_messages() {
+		
+	}
+
+}

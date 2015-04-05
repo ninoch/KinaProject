@@ -1,0 +1,16 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public class BackGroundImage extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public BackGroundImage(String src) {
+		this.setLayout(null);
+		this
+		this.setVisible(true);
+	}
+
+}

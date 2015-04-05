@@ -1,0 +1,93 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class DrugProfile extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	public DrugProfile() {
+		this.setLayout(new CardLayout());
+		this.setSize(new Dimension(480, 400));
+
+		CardLayout cl = (CardLayout)(this.getLayout());
+		JPanel content = new JPanel();
+		content.setLayout(null);
+		this.add(content, "default");
+		this.add(new ChangePass(), "changePass");
+        cl.show(this, "default");
+		
+		JButton change = new JButton("\u062B\u0628\u062A \u062A\u063A\u06CC\u06CC\u0631\u0627\u062A");
+		change.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO change attributes 
+				DrugProfile.this.setVisible(false);
+			}
+		});
+		change.setBounds(10, 366, 89, 23);
+		content.add(change);
+		
+		JButton changePass = new JButton("\u062A\u063A\u06CC\u06CC\u0631 \u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631");
+		changePass.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cl.show(DrugProfile.this, "changePass");
+			}
+		});
+		changePass.setBounds(109, 366, 109, 23);
+		content.add(changePass);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(424, 11, 46, 14);
+		content.add(label);
+		
+		textField = new JTextField();
+		textField.setBounds(219, 36, 251, 20);
+		content.add(textField);
+		textField.setColumns(10);
+		
+		JLabel label_1 = new JLabel("\u0646\u0627\u0645:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(424, 67, 46, 14);
+		content.add(label_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(219, 92, 251, 20);
+		content.add(textField_1);
+		
+		JLabel label_2 = new JLabel("\u0646\u0627\u0645:");
+		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_2.setBounds(424, 123, 46, 14);
+		content.add(label_2);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(219, 148, 251, 20);
+		content.add(textField_2);
+		
+		JLabel label_3 = new JLabel("\u0646\u0627\u0645:");
+		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_3.setBounds(424, 179, 46, 14);
+		content.add(label_3);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(219, 204, 251, 20);
+		content.add(textField_3);
+
+	}
+}

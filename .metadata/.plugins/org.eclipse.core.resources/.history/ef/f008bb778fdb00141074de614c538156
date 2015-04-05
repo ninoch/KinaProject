@@ -1,0 +1,14 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public class IllnessReport extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public IllnessReport() {
+
+	}
+
+}

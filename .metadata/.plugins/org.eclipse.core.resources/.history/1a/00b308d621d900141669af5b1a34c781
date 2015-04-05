@@ -1,0 +1,521 @@
+package graphics;
+import java.awt.EventQueue;
+
+import javax.swing.ButtonGroup;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JPasswordField;
+import javax.swing.JCheckBox;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.Color;
+
+@SuppressWarnings("serial")
+public class Login extends JFrame {
+	private JPanel contentPane;
+	private JTextField username;
+	private JPasswordField passw;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Login frame = new Login();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Login() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 390, 240);
+		mainPage();
+	}
+	
+	private void mainPage()
+	{
+		setTitle("\u0648\u0631\u0648\u062F");
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JButton login = new JButton("\u0648\u0631\u0648\u062F");
+		login.setBounds(28, 159, 89, 23);
+		contentPane.add(login);
+		
+		JButton forgetPass = new JButton("\u0641\u0631\u0627\u0645\u0648\u0634\u06CC \u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631");
+		forgetPass.setBounds(127, 159, 127, 23);
+		contentPane.add(forgetPass);
+		
+		JButton signup = new JButton("\u062B\u0628\u062A \u0646\u0627\u0645");
+		signup.setBounds(264, 159, 89, 23);
+		contentPane.add(signup);
+		
+		username = new JTextField();
+		username.setToolTipText("\u0646\u0627\u0645 \u06A9\u0627\u0631\u0628\u0631\u06CC \u062E\u0648\u062F \u0631\u0627 \u0648\u0627\u0631\u062F \u06A9\u0646\u06CC\u062F");
+		username.setBounds(164, 33, 189, 20);
+		contentPane.add(username);
+		username.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u06A9\u0627\u0631\u0628\u0631\u06CC:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(264, 11, 89, 11);
+		contentPane.add(label);
+		
+		JLabel label_1 = new JLabel("\u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(264, 61, 89, 11);
+		contentPane.add(label_1);
+		
+		passw = new JPasswordField();
+		passw.setBounds(164, 83, 189, 20);
+		contentPane.add(passw);
+		
+		JCheckBox showPass = new JCheckBox("\u0646\u0645\u0627\u06CC\u0634 \u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631");
+		showPass.setBounds(164, 110, 189, 23);
+		contentPane.add(showPass);
+		
+		JLabel warning = new JLabel("نام کاربری و یا کلمه عبور؛اشتباه است.");
+		warning.setForeground(Color.RED);
+		warning.setBounds(28, 135, 223, 23);
+		warning.setVisible(false);
+		contentPane.add(warning);
+		
+		ChangeListener changeListener = new ChangeListener() {
+			public void stateChanged(ChangeEvent changeEvent) {
+				JCheckBox showPass = (JCheckBox) changeEvent.getSource();
+				if (showPass.isSelected())
+		            passw.setEchoChar((char)0);
+			    else
+			    	passw.setEchoChar('*');
+			}
+		};
+	    showPass.addChangeListener(changeListener);
+	    
+	    login.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	// CHECK username TODO
+	        	Login.this.dispose();
+	        	if(username.getText().equals("1"))
+	        	{
+	        		Admin a = new Admin();
+	        		a.setVisible(true);
+	        	}
+	        	else if(username.getText().equals("2"))
+	        	{
+	        		DrugStore d = new DrugStore();
+	        		d.setVisible(true);
+	        	}
+	        	/*
+	        	else if(username.getText().equals("3"))
+	        	{
+	        		DrugStore d = new DrugStore();
+	        		d.setVisible(true);
+	        	}
+	        	else if(username.getText().equals("4"))
+	        	{
+	        		DrugStore d = new DrugStore();
+	        		d.setVisible(true);
+	        	}
+	        	*/
+	        	else
+	        	{
+	        		warning.setVisible(true);
+	        	}
+	        }
+	    });
+	    
+	    forgetPass.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	contentPane.setVisible(false);
+				ForgetPass();
+	        }
+	    });
+	    
+	    signup.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	contentPane.setVisible(false);
+	        	signup();
+	        }
+	    });
+	}
+	
+	private void ForgetPass() {
+		setTitle("\u0641\u0631\u0627\u0645\u0648\u0634\u06CC \u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631");
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JButton show = new JButton("\u0646\u0645\u0627\u06CC\u0634");
+		show.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		show.setBounds(10, 134, 89, 23);
+		contentPane.add(show);
+		
+		JButton back = new JButton("\u0628\u0627\u0632\u06AF\u0634\u062A");
+		back.setBounds(10, 168, 89, 23);
+		contentPane.add(back);
+		
+		username = new JTextField();
+		username.setBounds(105, 62, 259, 20);
+		contentPane.add(username);
+		username.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u06A9\u0627\u0631\u0628\u0631\u06CC:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(255, 37, 109, 14);
+		contentPane.add(label);
+		
+		JLabel passw = new JLabel("");
+		passw.setBounds(10, 93, 354, 30);
+		contentPane.add(passw);
+		
+		show.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	// if Username is correct, show password
+	        	passw.setText("Your Password Here");
+	        	// else, show error message TODO
+	        }
+	    });
+		
+		back.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	contentPane.setVisible(false);
+	        	mainPage();
+	        }
+	    });
+	}
+	
+	private void signup()
+	{
+		final ButtonGroup buttonGroup = new ButtonGroup();
+		setTitle("\u0627\u0646\u062A\u062E\u0627\u0628 \u0646\u0648\u0639 \u062B\u0628\u062A \u0646\u0627\u0645");
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JButton select = new JButton("\u0634\u0631\u0648\u0639 \u062B\u0628\u062A \u0646\u0627\u0645");
+		select.setBounds(10, 134, 109, 23);
+		contentPane.add(select);
+		
+		JButton back = new JButton("\u0628\u0627\u0632\u06AF\u0634\u062A");
+		back.setBounds(10, 168, 109, 23);
+		contentPane.add(back);
+		
+		JLabel label = new JLabel("\u062B\u0628\u062A \u0646\u0627\u0645 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(255, 11, 109, 14);
+		contentPane.add(label);
+		
+		JRadioButton patient = new JRadioButton("\u0628\u06CC\u0645\u0627\u0631");
+		buttonGroup.add(patient);
+		patient.setSelected(true);
+		patient.setBounds(255, 30, 109, 23);
+		contentPane.add(patient);
+		
+		JRadioButton drug = new JRadioButton("\u062F\u0627\u0631\u0648\u062E\u0627\u0646\u0647");
+		buttonGroup.add(drug);
+		drug.setBounds(255, 58, 109, 23);
+		contentPane.add(drug);
+		
+		JRadioButton doctor = new JRadioButton("\u067E\u0632\u0634\u06A9");
+		buttonGroup.add(doctor);
+		doctor.setBounds(255, 84, 109, 23);
+		contentPane.add(doctor);
+		
+		select.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+	        	contentPane.setVisible(false);
+				if(patient.isSelected())
+					patiSignUp();
+				else if(doctor.isSelected())
+					doctorSignUp();
+				else if(drug.isSelected())
+					drugSignUp();
+			}
+		});
+		
+		back.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.setVisible(false);
+				mainPage();
+			}
+		});
+		
+	}
+	private void patiSignUp() {
+		setTitle("\u062B\u0628\u062A \u0646\u0627\u0645 \u0628\u06CC\u0645\u0627\u0631");
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JTextField name;
+		JLabel label_1;
+		JTextField familyName;
+		JLabel label_2;
+		JTextField id;
+		JLabel label_3;
+		JTextField tell;
+		
+		name = new JTextField();
+		name.setBounds(217, 29, 147, 20);
+		contentPane.add(name);
+		name.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(265, 11, 99, 20);
+		contentPane.add(label);
+		
+		label_1 = new JLabel("\u0646\u0627\u0645 \u062E\u0627\u0646\u0648\u0627\u062F\u06AF\u06CC:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(265, 60, 99, 20);
+		contentPane.add(label_1);
+		
+		familyName = new JTextField();
+		familyName.setColumns(10);
+		familyName.setBounds(217, 79, 147, 20);
+		contentPane.add(familyName);
+		
+		label_2 = new JLabel("\u0634\u0645\u0627\u0631\u0647 \u0628\u06CC\u0645\u0647:");
+		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_2.setBounds(96, 11, 99, 20);
+		contentPane.add(label_2);
+		
+		id = new JTextField();
+		id.setColumns(10);
+		id.setBounds(48, 29, 147, 20);
+		contentPane.add(id);
+		
+		label_3 = new JLabel("\u062A\u0644\u0641\u0646 \u062A\u0645\u0627\u0633:");
+		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_3.setBounds(96, 60, 99, 20);
+		contentPane.add(label_3);
+		
+		tell = new JTextField();
+		tell.setColumns(10);
+		tell.setBounds(48, 79, 147, 20);
+		contentPane.add(tell);
+		
+		JButton add = new JButton("\u062B\u0628\u062A");
+		add.setBounds(10, 128, 89, 23);
+		contentPane.add(add);
+		
+		JButton back = new JButton("\u0628\u0627\u0632\u06AF\u0634\u062A");
+		back.setBounds(10, 162, 89, 23);
+		contentPane.add(back);
+		
+		add.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.setVisible(false);
+				// DO SOMTHING HERE TODO
+				mainPage();
+			}
+		});
+		
+		back.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.setVisible(false);
+				mainPage();
+			}
+		});
+	}
+	
+	private void doctorSignUp() {
+		setTitle("\u062B\u0628\u062A \u0646\u0627\u0645 \u067E\u0632\u0634\u06A9");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 390, 240);
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+
+		JTextField name;
+		JLabel label_1;
+		JTextField familyName;
+		JLabel label_2;
+		JTextField id;
+		JLabel label_3;
+		JTextField tell;
+		
+		name = new JTextField();
+		name.setBounds(217, 29, 147, 20);
+		contentPane.add(name);
+		name.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(265, 11, 99, 20);
+		contentPane.add(label);
+		
+		label_1 = new JLabel("\u0646\u0627\u0645 \u062E\u0627\u0646\u0648\u0627\u062F\u06AF\u06CC:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(265, 60, 99, 20);
+		contentPane.add(label_1);
+		
+		familyName = new JTextField();
+		familyName.setColumns(10);
+		familyName.setBounds(217, 79, 147, 20);
+		contentPane.add(familyName);
+		
+		label_2 = new JLabel("\u0634\u0645\u0627\u0631\u0647 \u0646\u0638\u0627\u0645 \u067E\u0632\u0634\u06A9\u06CC:");
+		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_2.setBounds(96, 11, 99, 20);
+		contentPane.add(label_2);
+		
+		id = new JTextField();
+		id.setColumns(10);
+		id.setBounds(48, 29, 147, 20);
+		contentPane.add(id);
+		
+		label_3 = new JLabel("\u062A\u0644\u0641\u0646 \u062A\u0645\u0627\u0633 \u0645\u0637\u0628:");
+		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_3.setBounds(96, 60, 99, 20);
+		contentPane.add(label_3);
+		
+		tell = new JTextField();
+		tell.setColumns(10);
+		tell.setBounds(48, 79, 147, 20);
+		contentPane.add(tell);
+		
+		JButton add = new JButton("\u062B\u0628\u062A");
+		add.setBounds(10, 128, 89, 23);
+		contentPane.add(add);
+		
+		JButton back = new JButton("\u0628\u0627\u0632\u06AF\u0634\u062A");
+		back.setBounds(10, 162, 89, 23);
+		contentPane.add(back);
+		
+		JTextArea address = new JTextArea();
+		address.setBounds(109, 133, 255, 52);
+		contentPane.add(address);
+		
+		JLabel label_4 = new JLabel("\u0622\u062F\u0631\u0633 \u0645\u0637\u0628:");
+		label_4.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_4.setBounds(265, 110, 99, 20);
+		contentPane.add(label_4);
+		
+		add.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.setVisible(false);
+				// DO SOMTHING HERE TODO
+				mainPage();
+			}
+		});
+		
+		back.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.setVisible(false);
+				mainPage();
+			}
+		});
+	}
+	
+	private void drugSignUp() {
+		setTitle("\u062B\u0628\u062A \u0646\u0627\u0645 \u067E\u0632\u0634\u06A9");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 390, 240);
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JTextField name;
+		JLabel label_2;
+		JTextField id;
+		JLabel label_3;
+		JTextField tell;
+		
+		name = new JTextField();
+		name.setBounds(217, 29, 147, 20);
+		contentPane.add(name);
+		name.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u062F\u0627\u0631\u0648\u062E\u0627\u0646\u0647:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(265, 11, 99, 20);
+		contentPane.add(label);
+		
+		label_2 = new JLabel("\u067E\u0631\u0648\u0627\u0646\u0647 \u062A\u0627\u0633\u06CC\u0633 \u062F\u0627\u0631\u0648\u062E\u0627\u0646\u0647:");
+		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_2.setBounds(48, 11, 147, 20);
+		contentPane.add(label_2);
+		
+		id = new JTextField();
+		id.setColumns(10);
+		id.setBounds(48, 29, 147, 20);
+		contentPane.add(id);
+		
+		label_3 = new JLabel("\u062A\u0644\u0641\u0646 \u062A\u0645\u0627\u0633:");
+		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_3.setBounds(265, 60, 99, 20);
+		contentPane.add(label_3);
+		
+		tell = new JTextField();
+		tell.setColumns(10);
+		tell.setBounds(217, 79, 147, 20);
+		contentPane.add(tell);
+		
+		JButton add = new JButton("\u062B\u0628\u062A");
+		add.setBounds(10, 128, 89, 23);
+		contentPane.add(add);
+		
+		JButton back = new JButton("\u0628\u0627\u0632\u06AF\u0634\u062A");
+		back.setBounds(10, 162, 89, 23);
+		contentPane.add(back);
+		
+		JTextArea address = new JTextArea();
+		address.setBounds(109, 133, 255, 52);
+		contentPane.add(address);
+		
+		JLabel label_4 = new JLabel("\u0622\u062F\u0631\u0633:");
+		label_4.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_4.setBounds(265, 110, 99, 20);
+		contentPane.add(label_4);
+		
+		add.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.setVisible(false);
+				// DO SOMTHING HERE TODO
+				mainPage();
+			}
+		});
+		
+		back.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.setVisible(false);
+				mainPage();
+			}
+		});
+	}
+
+}

@@ -1,0 +1,40 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+@SuppressWarnings("serial")
+public class PatientAddActivity extends JPanel {
+	private JTextField textField;
+
+	public PatientAddActivity() {
+		this.setLayout(null);
+		this.setSize(new Dimension(480, 400));
+		
+		JLabel label = new JLabel("\u0627\u0646\u062A\u062E\u0627\u0628 \u0641\u0627\u06CC\u0644:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(383, 11, 87, 14);
+		add(label);
+		
+		JLabel label_1 = new JLabel("\u062A\u0627\u0631\u06CC\u062E \u0627\u0645\u0631\u0648\u0632:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(408, 59, 62, 14);
+		add(label_1);
+		
+		textField = new JTextField();
+		textField.setBounds(183, 56, 216, 20);
+		add(textField);
+		textField.setColumns(10);
+		
+		JButton button = new JButton("\u0627\u0646\u062A\u062E\u0627\u0628");
+		button.setBounds(183, 7, 216, 23);
+		add(button);
+	}
+
+}

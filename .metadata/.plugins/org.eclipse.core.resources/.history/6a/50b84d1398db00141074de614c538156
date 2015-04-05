@@ -1,0 +1,14 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public class DoctorInbox extends Inbox {
+
+	/**
+	 * Create the panel.
+	 */
+	public DoctorInbox() {
+
+	}
+
+}

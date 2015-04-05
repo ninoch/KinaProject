@@ -1,0 +1,123 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+@SuppressWarnings("serial")
+public class DoctorToDoctor extends JPanel {
+	private JTextField dName;
+	private JTextField expert;
+
+	int dnum = 3;
+	JRadioButton[] doctors;
+	private JTextField pIp;
+
+	public DoctorToDoctor() {
+		this.setLayout(null);
+		this.setSize(new Dimension(480, 400));
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u062E\u0627\u0646\u0648\u0627\u062F\u06AF\u06CC \u067E\u0632\u0634\u06A9:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(326, 11, 144, 14);
+		add(label);
+		
+		dName = new JTextField();
+		dName.setBounds(268, 33, 202, 20);
+		add(dName);
+		dName.setColumns(10);
+		
+		JLabel label_1 = new JLabel("\u062A\u062E\u0635\u0635:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(110, 11, 144, 14);
+		add(label_1);
+		
+		expert = new JTextField();
+		expert.setColumns(10);
+		expert.setBounds(52, 33, 202, 20);
+		add(expert);
+		
+		JButton button = new JButton("\u062C\u0633\u062A\u062C\u0648");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(dName.getText().equals("warning"))
+				{
+					
+				}
+				else
+				{
+					pane.setVisible(true);
+					label_2.setVisible(true);
+					pIp.setVisible(true);
+					send.setVisible(true);
+				}
+				
+			}
+		});
+		button.setBounds(10, 64, 89, 23);
+		add(button);
+
+		 doctors = new JRadioButton[dnum];
+		 // TODO making message title
+		 for(int i = 0; i < dnum; i++)
+			 doctors[i] = new JRadioButton("doctor # " + (i  + 1));
+		 
+		// Making Select
+		JPanel panel = new JPanel();
+		ButtonGroup bg = new ButtonGroup();
+	    
+	    
+	    JScrollPane pane = new JScrollPane(panel);
+	    pane.setLocation(268, 100);
+	    pane.setSize(202, 280);
+	    panel.setLayout(new GridLayout(dnum, 1));
+	    pane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	    pane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+	    pane.setVisible(false);
+	    
+	    JButton send = new JButton("\u0627\u0631\u062C\u0627\u0639 \u0628\u06CC\u0645\u0627\u0631");
+	    send.setLocation(10, 350);
+	    send.setSize(89, 30);
+	    send.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		int ind = 0;
+	    		for(int i = 1; i < dnum; i++)
+	    			if(doctors[i].isSelected())
+	    			{
+	    				ind = i;
+	    				break;
+	    			}
+	    		// TODO send patient to doctor
+	    	}
+	    });
+	    send.setVisible(false);
+	    
+	    this.add(pane);
+	    this.add(send);
+	    
+	    JLabel label_2 = new JLabel("\u0634\u0645\u0627\u0631\u0647 \u0628\u06CC\u0645\u0647 \u0628\u06CC\u0645\u0627\u0631:");
+	    label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+	    label_2.setBounds(68, 297, 186, 14);
+	    label_2.setVisible(false);
+	    add(label_2);
+	    
+	    pIp = new JTextField();
+	    pIp.setColumns(10);
+	    pIp.setBounds(10, 319, 244, 20);
+	    pIp.setVisible(false);
+	    add(pIp);
+
+	}
+}

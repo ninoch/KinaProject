@@ -1,0 +1,43 @@
+package graphics;
+
+import java.awt.Component;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.TableCellRenderer;
+
+@SuppressWarnings("serial")
+public class DoctorsSearchResault extends JPanel {
+
+	public DoctorsSearchResault() {
+	        Object [] columnNames = new Object[]{ "Id", "Quantity" };
+	        Object [][] data        = new Object[][]{ {"06", }, {"08", 2} };
+
+	        JTable table = new JTable( data, columnNames ) { 
+	            public TableCellRenderer getCellRenderer( int row, int column ) {
+	                return new addMyButton();
+	            }
+	         };
+
+	        table.setRowHeight( 32 );
+	        
+		    this.add( new JScrollPane( table ) );
+	}
+	class addMyButton extends JPanel implements TableCellRenderer 
+	{
+	        public Component getTableCellRendererComponent(
+	                            final JTable table, Object value,
+	                            boolean isSelected, boolean hasFocus,
+	                            int row, int column) {
+	                this.add( new JTextField( value.toString()  ) );
+	                this.add( new JButton("+"));
+	                this.add( new JButton("-"));
+	                return this;
+	        }
+	}
+
+}

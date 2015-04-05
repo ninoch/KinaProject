@@ -1,0 +1,58 @@
+package graphics;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JPanel;
+import javax.swing.JList;
+import javax.swing.JLabel;
+
+public class AllPharmacies extends JPanel {
+	
+	private int dNum = 3;
+	JList list;
+	JLabel[] pharmacies;
+	DefaultListModel model;
+
+	public AllPharmacies() {
+		
+		JList<JLabel> list = new JList<JLabel>();
+		this.add(list);
+		
+		pharmacies = new JLabel[dNum];
+		for(int i = 0; i < dNum; i++)
+		{
+			pharmacies[i] = new JLabel("Pharmacy #" + ( i + 1));
+			pharmacies[i].setVisible(true);
+			list.add(pharmacies[i]);
+		}
+		  public ListModelExample() {
+		    setLayout(new BorderLayout());
+		    model = new DefaultListModel();
+		    list = new JList(model);
+		    JScrollPane pane = new JScrollPane(list);
+		    JButton addButton = new JButton("Add Element");
+		    JButton removeButton = new JButton("Remove Element");
+		    for (int i = 0; i < 15; i++)
+		      model.addElement("Element " + i);
+
+		    addButton.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent e) {
+		        model.addElement("Element " + counter);
+		        counter++;
+		      }
+		    });
+		    removeButton.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent e) {
+		        if (model.getSize() > 0)
+		          model.removeElementAt(0);
+		      }
+		    });
+
+		    add(pane, BorderLayout.NORTH);
+		    add(addButton, BorderLayout.WEST);
+		    add(removeButton, BorderLayout.EAST);
+		  }
+	}
+	
+	
+
+}

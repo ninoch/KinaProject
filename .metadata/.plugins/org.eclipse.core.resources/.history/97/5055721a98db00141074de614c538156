@@ -1,0 +1,16 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public class DoctorInbox extends Inbox {
+
+	public DoctorInbox() {
+
+	}
+
+	@Override
+	protected void make_messages() {
+		
+	}
+
+}

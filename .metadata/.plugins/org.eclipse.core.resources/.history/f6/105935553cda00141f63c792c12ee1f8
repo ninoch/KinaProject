@@ -1,0 +1,17 @@
+package graphics;
+
+import javax.swing.JPanel;
+import javax.swing.JList;
+
+public class AllPharmacies extends JPanel {
+	
+	private int dNum = 3;
+	public AllPharmacies() {
+		
+		JList list = new JList();
+		add(list);
+		
+
+	}
+
+}

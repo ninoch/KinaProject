@@ -1,0 +1,104 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.table.TableCellRenderer;
+
+@SuppressWarnings("serial")
+public class DoctorsSearchResault extends JPanel {
+
+	public DoctorsSearchResault(int pnum) {
+			this.setSize(new Dimension(480, 400));
+			
+	        Object [] columnNames = new Object[]{ "Name", "Family", "ID", "Profile", "Health", "Ilness", "Activity", "Archive"};
+	        JTable table = new JTable( new Object[pnum][8], columnNames ) { 
+	            public TableCellRenderer getCellRenderer( int row, int column ) {
+	                return new addMyButton();
+	            }
+	            public boolean isCellEditable(int row, int column) {
+    				return false;
+    			}
+	         };
+	         
+	        table.setRowHeight( 32 );
+	        table.setPreferredSize(new Dimension(460, 300));
+	        table.setMaximumSize(new Dimension(460, 300));
+	        table.setMinimumSize(new Dimension(460, 300));
+
+		    JScrollPane pane = new JScrollPane();
+		    pane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		    pane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		    pane.setViewportView(table);
+		    this.add( pane );
+	}
+	class addMyButton extends JPanel implements TableCellRenderer 
+	{
+	        public Component getTableCellRendererComponent(
+	                            final JTable table, Object value,
+	                            boolean isSelected, boolean hasFocus,
+	                            int row, int column) {
+	        		if(column == 0)
+	        		{
+	        			this.add(new JLabel("name" + row));
+	        		}
+	        		if(column == 1)
+	        		{
+	    	        	this.add(new JLabel("fname"));
+	        		}
+	        		if(column == 2)
+	        		{
+	    	        	this.add(new JLabel("32131"));
+	        		}
+	        		if(column == 3)
+	        		{
+	        			JButton btn = new JButton();
+		                btn.setText("Show");
+		                btn.addActionListener(new ActionListener() {
+		        			public void actionPerformed(ActionEvent e) {
+		        			}
+		        		});
+				    	this.add(btn);
+	        		}
+	        		if(column == 4)
+	        		{
+	        			JButton btn = new JButton();
+	        			btn.setText("Report");
+	        			
+				    	this.add(btn);
+	        		}
+		        	if(column == 5)
+		        	{
+		        		JButton btn = new JButton();
+		        		btn.setText("Report");
+
+				    	this.add(btn);
+	        		}
+			        if(column == 6)
+			        {
+			        	JButton btn = new JButton();
+			        	btn.setText("Report");
+
+				    	this.add(btn);
+	        		}
+				    if(column == 7)
+				    {
+				    	JButton btn = new JButton();
+				    	btn.setText("Archive");
+
+				    	this.add(btn);
+	        		}
+	                return this;
+	        }
+	}
+
+}

@@ -1,0 +1,103 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+public class Test extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField answer;
+
+	public Test() {
+		setTitle("\u0641\u0631\u0627\u0645\u0648\u0634\u06CC \u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631");
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JButton show = new JButton("\u0646\u0645\u0627\u06CC\u0634");
+		show.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		show.setBounds(10, 194, 89, 23);
+		contentPane.add(show);
+		
+		JButton back = new JButton("\u0628\u0627\u0632\u06AF\u0634\u062A");
+		back.setBounds(10, 228, 89, 23);
+		contentPane.add(back);
+		
+		JTextField username = new JTextField();
+		username.setBounds(105, 36, 259, 20);
+		contentPane.add(username);
+		username.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u06A9\u0627\u0631\u0628\u0631\u06CC:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(255, 11, 109, 14);
+		label.setVisible(false);
+		contentPane.add(label);
+		
+		JLabel passw = new JLabel("");
+		passw.setHorizontalAlignment(SwingConstants.LEFT);
+		passw.setBounds(10, 163, 354, 20);
+		contentPane.add(passw);
+		
+		JLabel question = new JLabel("\u0633\u0648\u0627\u0644 \u0627\u0645\u0646\u06CC\u062A\u06CC \u0634\u0645\u0627 \u0627\u06CC\u0646\u062C\u0627!");
+		question.setHorizontalAlignment(SwingConstants.RIGHT);
+		question.setBounds(10, 68, 354, 14);
+		question.setVisible(false);
+		contentPane.add(question);
+		
+		JLabel label_1 = new JLabel("\u067E\u0627\u0633\u062E \u0627\u0645\u0646\u06CC\u062A\u06CC:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(255, 93, 109, 14);
+		label_1.setVisible(false);
+		contentPane.add(label_1);
+		
+		answer = new JTextField();
+		answer.setColumns(10);
+		answer.setBounds(105, 118, 259, 20);
+		answer.setVisible(false);
+		contentPane.add(answer);
+		
+		show.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	if(state == 0)
+	        	{
+	        		state ++;
+	        	}
+	        	else if(state == 1)
+	        	{
+	        		// if Username is correct, show password
+	        		passw.setText("Your Password Here");
+	        		passw.setVisible(true);
+	        		// else, show error message TODO
+	        		state = 0;
+	        	}
+	        	
+	        }
+	    });
+		
+		back.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	contentPane.setVisible(false);
+	        }
+	    });
+
+	}
+
+}

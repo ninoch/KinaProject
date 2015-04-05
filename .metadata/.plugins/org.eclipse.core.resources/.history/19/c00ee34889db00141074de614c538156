@@ -1,0 +1,55 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import java.awt.Component;
+import javax.swing.ScrollPaneConstants;
+
+@SuppressWarnings("serial")
+public class PatientSelectDoctor extends JPanel {
+	private JTextField name;
+	private JTextField textField;
+
+	public PatientSelectDoctor() {
+		this.setLayout(null);
+		this.setSize(new Dimension(480, 400));
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u067E\u0632\u0634\u06A9:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(406, 11, 64, 14);
+		add(label);
+		
+		name = new JTextField();
+		name.setBounds(264, 8, 151, 20);
+		add(name);
+		name.setColumns(10);
+		
+		JLabel label_1 = new JLabel("\u067E\u0631\u0648\u0627\u0646\u0647 \u0646\u0638\u0627\u0645 \u067E\u0632\u0634\u06A9\u06CC:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(162, 11, 97, 14);
+		add(label_1);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(10, 8, 151, 20);
+		add(textField);
+		
+		JButton button = new JButton("\u062C\u0633\u062A\u062C\u0648");
+		button.setBounds(10, 39, 89, 23);
+		add(button);
+		
+		JScrollPane scrollPane = new JScrollPane((Component) null);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(150, 77, 320, 312);
+		add(scrollPane);
+
+	}
+}

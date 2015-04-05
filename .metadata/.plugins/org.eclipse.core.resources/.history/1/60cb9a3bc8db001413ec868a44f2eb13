@@ -1,0 +1,11 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public class Users extends JPanel {
+
+	public Users() {
+
+	}
+
+}

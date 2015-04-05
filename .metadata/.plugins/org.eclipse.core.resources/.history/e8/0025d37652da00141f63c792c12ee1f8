@@ -1,0 +1,114 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+@SuppressWarnings("serial")
+public abstract class HomePage extends JFrame {
+
+
+	protected JPanel menu;
+	protected JPanel content;
+	protected CardLayout cl;
+	
+	public HomePage() {
+		/*
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 480);
+		
+		GridLayout myLayout = new GridLayout(2,1);  
+		getContentPane().setLayout(myLayout);  
+		
+		menu = new JPanel();
+		menu.setBorder(new EmptyBorder(5, 5, 5, 5));
+		menu.setBounds(0, 0, 490, 30);
+		menu.setLayout(null);
+		
+		content = new JPanel (new CardLayout());
+        cl = (CardLayout)(content.getLayout());
+        cl.show(content, "default");
+        
+        getContentPane().add(menu, BorderLayout.PAGE_START);
+        getContentPane().add(content, BorderLayout.CENTER);
+        */
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 480);
+		
+		GridBagLayout myLayout = new GridBagLayout();  
+		this.setLayout(myLayout);  
+		
+		menu = new JPanel();
+		menu.setBorder(new EmptyBorder(5, 5, 5, 5));
+		// menu.setBounds(0, 0, 490, 30);
+		menu.setMinimumSize(new Dimension());
+		menu.setLayout(null);
+		
+		content = new JPanel (new CardLayout());
+		// content.setBounds(0, 31, 490, 450);
+        cl = (CardLayout)(content.getLayout());
+        cl.show(content, "default");
+        
+        
+        
+        // Adding to fram
+        GridBagConstraints c = new GridBagConstraints();
+        
+        c.fill = GridBagConstraints.HORIZONTAL;
+        
+        c.gridx = 0;
+        c.gridy = 0;
+        c.insets = new Insets(1,1,1,1);
+        getContentPane().add(menu, c);
+        
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 1;
+        c.insets = new Insets(10,10,10,10);
+        getContentPane().add(content, c);
+        
+        /*
+        
+
+        GridBagConstraints c = new GridBagConstraints();
+        JButton button;
+        button = new JButton("Button 1");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 0;
+        getContentPane().add(button, c);
+     
+        button = new JButton("Button 2");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.5;
+        c.gridx = 1;
+        c.gridy = 0;
+        getContentPane().add(button, c);
+     
+        button = new JButton("Button 3");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.5;
+        c.gridx = 2;
+        c.gridy = 0;
+        getContentPane().add(button, c);
+     
+        button = new JButton("Long-Named Button 4");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.ipady = 40;      //make this component tall
+        c.weightx = 0.0;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 1;
+        getContentPane().add(button, c);
+        */
+	}
+
+}

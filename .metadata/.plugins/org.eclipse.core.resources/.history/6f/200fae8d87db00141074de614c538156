@@ -1,0 +1,13 @@
+import javax.swing.JPanel;
+
+
+public class PatientsAllDoctors extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public PatientsAllDoctors() {
+
+	}
+
+}

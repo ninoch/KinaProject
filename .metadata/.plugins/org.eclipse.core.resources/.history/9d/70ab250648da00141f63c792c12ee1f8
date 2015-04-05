@@ -1,0 +1,16 @@
+package graphics;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+
+public class ChangePass extends JPanel {
+	
+	public ChangePass() {
+		this.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		add(lblNewLabel);
+
+	}
+
+}

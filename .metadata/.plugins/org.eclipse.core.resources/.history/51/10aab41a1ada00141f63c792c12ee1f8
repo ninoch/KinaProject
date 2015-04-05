@@ -1,0 +1,14 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public class AddDrugSell extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public AddDrugSell() {
+
+	}
+
+}

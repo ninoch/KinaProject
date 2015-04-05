@@ -1,0 +1,43 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+
+@SuppressWarnings("serial")
+public class DoctorConsultation extends JPanel {
+
+	public DoctorConsultation() {
+		this.setLayout(null);
+		this.setSize(new Dimension(480, 400));
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u067E\u0632\u0634\u06A9 \u0627\u0631\u062C\u0627\u0639 \u062F\u0647\u0646\u062F\u0647:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(341, 89, 129, 14);
+		add(label);
+		
+		JLabel lblNewLabel = new JLabel("DoctorName Here");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel.setBounds(32, 89, 314, 14);
+		add(lblNewLabel);
+		
+		JLabel label_1 = new JLabel("\u0646\u0627\u0645 \u0628\u06CC\u0645\u0627\u0631:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(351, 114, 119, 14);
+		add(label_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("patientNameHere");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_1.setBounds(32, 114, 314, 14);
+		add(lblNewLabel_1);
+		
+		JButton btnNewButton = new JButton("\u0645\u0634\u0627\u0647\u062F\u0647 \u067E\u0631\u0648\u0641\u0627\u06CC\u0644 \u0628\u06CC\u0645\u0627\u0631");
+		btnNewButton.setBounds(32, 139, 165, 23);
+		add(btnNewButton);
+	}
+
+}

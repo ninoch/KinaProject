@@ -1,0 +1,125 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public abstract class Report extends JPanel {
+	protected int rnum  = 2;
+	protected JRadioButton[] reports;
+	protected JPanel select;
+	protected  CardLayout cl;
+	protected JButton show;
+	private JLabel label;
+	private JTextField textField;
+	private JLabel label_1;
+	private JTextField textField_1;
+	private JLabel label_2;
+	private JButton filter;
+	
+
+	public Report() {
+		this.setLayout(new CardLayout());
+		this.setSize(new Dimension(480, 400));
+		
+		select = new JPanel();
+		this.add(select, "default");
+		// Messages Make in child inbox
+	    cl = (CardLayout)(this.getLayout());
+	    cl.show(this, "default");
+		
+		// Making Select
+		select.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		ButtonGroup bg = new ButtonGroup();
+	   
+	    JScrollPane pane = new JScrollPane(panel);
+	    pane.setLocation(10, 10);
+	    pane.setSize(320, 380);
+	    panel.setLayout(new GridLayout(rnum, 1));
+	    pane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	    pane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+	    
+	    show = new JButton("\u0645\u0634\u0627\u0647\u062F\u0647 \u06AF\u0632\u0627\u0631\u0634");
+	    show.setLocation(345, 360);
+	    show.setSize(130, 30);
+	    show.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		int ind = 0;
+	    		for(int i = 1; i < rnum; i++)
+	    			if(reports[i].isSelected())
+	    			{
+	    				ind = i;
+	    				break;
+	    			}
+	    		// TODO
+	    		cl.show(Report.this, "#" + ind);
+	    	}
+	    });
+	    
+	    // make_reports();
+	    for (int i = 0; i < rnum; i++)
+	    {
+			bg.add(reports[i]);
+			panel.add(reports[i]);
+	    }
+	    if(rnum > 0)
+	    	reports[0].setSelected(true);
+	    
+	    select.add(pane);
+	    select.add(show);
+	    
+	    label = new JLabel("\u0627\u0632 \u062A\u0627\u0631\u06CC\u062E:");
+	    label.setHorizontalAlignment(SwingConstants.RIGHT);
+	    label.setBounds(424, 10, 46, 14);
+	    select.add(label);
+	    
+	    textField = new JTextField();
+	    textField.setBounds(345, 35, 125, 20);
+	    select.add(textField);
+	    textField.setColumns(10);
+	    
+	    label_1 = new JLabel("\u0627\u0632 \u062A\u0627\u0631\u06CC\u062E:");
+	    label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+	    label_1.setBounds(424, 57, 46, 14);
+	    select.add(label_1);
+	    
+	    textField_1 = new JTextField();
+	    textField_1.setColumns(10);
+	    textField_1.setBounds(345, 82, 125, 20);
+	    select.add(textField_1);
+	    
+	    label_2 = new JLabel("\u0645\u062B\u0627\u0644 \u062A\u0627\u0631\u06CC\u062E: 1384/01/13");
+	    label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+	    label_2.setBounds(325, 113, 145, 14);
+	    select.add(label_2);
+	    
+	    filter = new JButton("\u0641\u06CC\u0644\u062A\u0631");
+	    filter.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		
+	    	}
+	    });
+	    filter.setBounds(340, 138, 130, 30);
+	    select.add(filter);
+	    
+	    make_reports();
+	}
+	
+	protected abstract void make_reports();
+
+}

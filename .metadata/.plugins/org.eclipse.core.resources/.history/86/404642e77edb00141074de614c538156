@@ -1,0 +1,66 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
+@SuppressWarnings("serial")
+public class PatientInbox extends JPanel {
+	
+	int mnum = 10;
+	JButton[] messages;
+	
+	public PatientInbox() {
+		this.setLayout(new CardLayout());
+		this.setSize(new Dimension(480, 400));
+		
+		
+		// Making Select
+		JPanel select = new JPanel();
+		select.setLayout(new GridLayout(1, 2));
+		
+		JPanel panel = new JPanel();
+		ButtonGroup bg = new ButtonGroup();
+	    
+	    for (int i = 0; i < dNum; i++)
+	    {
+			bg.add(pharmacies[i]);
+			panel.add(pharmacies[i]);
+	    }
+	    if(dNum > 0)
+	    	pharmacies[0].setSelected(true);
+	    
+	    JScrollPane pane = new JScrollPane(panel);
+	    panel.setLayout(new GridLayout(dNum, 1));
+	    pane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	    pane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+	    
+	    JButton btnNewButton = new JButton("New button");
+	    btnNewButton.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		int ind = 0;
+	    		for(int i = 1; i < dNum; i++)
+	    			if(pharmacies[i].isSelected())
+	    			{
+	    				ind = i;
+	    				break;
+	    			}
+	    		// TODO
+	    		cl.show(AllPharmacies.this, "#" + ind);
+	    	}
+	    });
+	    select.add(pane);
+	    select.add(btnNewButton);
+
+
+	}
+
+}

@@ -1,0 +1,105 @@
+package graphics;
+
+import graphics.DoctorsSearchResault.addMyButton;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+@SuppressWarnings("serial")
+public class Health extends JPanel {
+	private JTable table;
+	private JTextField variable;
+	private JTextField value;
+	private JTextField date;
+
+	public Health() {
+		this.setSize(new Dimension(480, 400));
+		this.setLayout(null);
+		
+		table = new JTable();
+		Object [] columnNames = new Object[]{ "Value", "Variable"};
+		JTable table = new JTable( new Object[0][0], columnNames ) { 
+            public boolean isCellEditable(int row, int column) {
+				return true;
+			}
+         };
+         
+        table.setRowHeight( 32 );
+
+	    JScrollPane pane = new JScrollPane(table);
+	    pane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	    pane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	    pane.setMinimumSize(new Dimension(460, 380));
+	    pane.setMaximumSize(new Dimension(460, 380));
+	    pane.setPreferredSize(new Dimension(460, 380));
+	    this.add( pane );
+	    
+		variable = new JTextField();
+		variable.setBounds(304, 250, 166, 20);
+		add(variable);
+		variable.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u0645\u062A\u063A\u06CC\u0631:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(424, 229, 46, 14);
+		add(label);
+		
+		JLabel label_1 = new JLabel("\u0645\u0642\u062F\u0627\u0631:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(250, 229, 44, 14);
+		add(label_1);
+		
+		value = new JTextField();
+		value.setColumns(10);
+		value.setBounds(128, 250, 166, 20);
+		add(value);
+		
+		JButton add = new JButton("\u0627\u0636\u0627\u0641\u0647 \u06A9\u0631\u062F\u0646");
+		add.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				model.addRow(new Object[]{value.getText(), variable.getText()});
+			}
+		});
+		add.setBounds(29, 249, 89, 23);
+		add(add);
+		
+		JLabel label_2 = new JLabel("\u062A\u0627\u0631\u06CC\u062E:");
+		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_2.setBounds(424, 313, 46, 14);
+		add(label_2);
+		
+		date = new JTextField();
+		date.setColumns(10);
+		date.setBounds(304, 334, 166, 20);
+		add(date);
+		
+		JLabel label_3 = new JLabel("\u0641\u0631\u0645\u062A \u062F\u0631\u0633\u062A \u0648\u0631\u0648\u062F\u06CC: 1394/01/13");
+		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_3.setBounds(128, 337, 166, 14);
+		add(label_3);
+		
+		JButton addAll = new JButton("\u062B\u0628\u062A");
+		addAll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO
+			}
+		});
+		addAll.setBounds(29, 333, 89, 23);
+		add(addAll);
+	}
+
+}

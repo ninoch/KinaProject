@@ -1,0 +1,43 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.EventQueue;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+@SuppressWarnings("serial")
+public abstract class HomePage extends JFrame {
+
+
+	private JPanel menu;
+	private JPanel content;
+	
+	public HomePage() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 480);
+		
+		GridLayout myLayout = new GridLayout(2,1);  
+		getContentPane().setLayout(myLayout);  
+		
+		menu = new JPanel();
+		menu.setBorder(new EmptyBorder(5, 5, 5, 5));
+		menu.setLayout(null);
+		
+
+		JPanel pic = new BackGroundImage("C:\\Users\\Ninochika\\workspace\\3\\OOD\\img\\admin.jpg");
+		JPanel AP = new AdminProfile();
+		JPanel Phars = new AllPharmacies();
+		
+		content = new JPanel (new CardLayout());
+		content.add(pic, "default");
+		content.add(AP, "profile");
+		content.add(Phars, "phars");
+        CardLayout cl = (CardLayout)(content.getLayout());
+        cl.show(content, "default");
+	}
+
+}

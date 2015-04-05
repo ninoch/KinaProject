@@ -1,0 +1,68 @@
+package graphics;
+
+import java.awt.Component;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.TableCellRenderer;
+
+@SuppressWarnings("serial")
+public class DoctorsSearchResault extends JPanel {
+
+	public DoctorsSearchResault(int pnum) {
+	        Object [] columnNames = new Object[]{ "Name", "Insurance", "Profile", "Health", "Ilness", "Activity", "Archive"};
+	        Object [][] data = new Object[pnum][7];
+	        for(int i = 0; i < pnum; i++)
+	        {
+	        	data[i][0] = "patient name";
+	        	data[i][1] = "insurance id";
+	        	for(int j = 2; j < 7; j++)
+	        		data[i][j] = "";
+	        }
+	        JTable table = new JTable( data, columnNames ) { 
+	            public TableCellRenderer getCellRenderer( int row, int column ) {
+	                return new addMyButton();
+	            }
+	         };
+
+	        table.setRowHeight( 32 );
+	        
+		    this.add( new JScrollPane( table ) );
+	}
+	class addMyButton extends JPanel implements TableCellRenderer 
+	{
+	        public Component getTableCellRendererComponent(
+	                            final JTable table, Object value,
+	                            boolean isSelected, boolean hasFocus,
+	                            int row, int column) {
+	        		JButton btn = new JButton();
+	        		if(column == 2)
+	        		{
+		                btn.setText("Show");
+	        		}
+	        		if(column == 3)
+	        		{
+		                this.add( new JButton("Report"));
+	        		}
+		        	if(column == 4)
+		        	{
+		                this.add( new JButton("Report"));
+	        		}
+			        if(column == 5)
+			        {
+		                this.add( new JButton("Report"));
+	        		}
+				    if(column == 6)
+				    {
+		                this.add( new JButton("Archive"));
+	        		}
+				    this.add(btn);
+	                return this;
+	        }
+	}
+
+}

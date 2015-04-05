@@ -1,0 +1,15 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class ActivityReport extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public ActivityReport() {
+
+	}
+
+}

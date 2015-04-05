@@ -1,0 +1,14 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public abstract class Report extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public Report() {
+
+	}
+
+}

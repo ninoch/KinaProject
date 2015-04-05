@@ -1,0 +1,21 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class DoctorConsultations extends Inbox {
+
+	/**
+	 * Create the panel.
+	 */
+	public DoctorConsultations() {
+
+	}
+
+	@Override
+	protected void make_messages() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

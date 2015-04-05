@@ -1,0 +1,52 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
+public class Admin extends JFrame {
+
+	private JPanel contentPane;
+	
+	public Admin() {
+		setTitle("\u0645\u062F\u06CC\u0631\u06CC\u062A");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 400, 400);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 390, 30);
+		contentPane.add(menuBar);
+		
+		JMenu menu = new JMenu("\u06A9\u0627\u0631\u0628\u0631\u0627\u0646");
+		menuBar.add(menu);
+		
+		JMenuItem drugs = new JMenuItem("\u062F\u0627\u0631\u0648\u062E\u0627\u0646\u0647 \u0647\u0627");
+		menu.add(drugs);
+		
+		JMenuItem patients = new JMenuItem("\u0628\u06CC\u0645\u0627\u0631\u0627\u0646");
+		menu.add(patients);
+		
+		JMenuItem doctors = new JMenuItem("\u067E\u0632\u0634\u06A9\u0627\u0646");
+		menu.add(doctors);
+		
+		JMenu profile = new JMenu("\u0645\u062F\u06CC\u0631\u06CC\u062A");
+		menuBar.add(profile);
+		
+		JMenuItem menuItem_3 = new JMenuItem("\u067E\u0631\u0648\u0641\u0627\u06CC\u0644");
+		profile.add(menuItem_3);
+		
+		JMenuItem logout = new JMenuItem("\u062E\u0631\u0648\u062C");
+		profile.add(logout);
+	}
+
+}

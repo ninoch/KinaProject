@@ -1,0 +1,28 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class DoctorsPatientSearch extends JPanel {
+	private JTextField name;
+
+	public DoctorsPatientSearch() {
+		this.setLayout(null);
+		this.setSize(new Dimension(480, 400));
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u0628\u06CC\u0645\u0627\u0631:");
+		label.setBounds(424, 35, 46, 14);
+		add(label);
+		
+		name = new JTextField();
+		name.setBounds(296, 60, 174, 20);
+		add(name);
+		name.setColumns(10);
+	}
+
+}

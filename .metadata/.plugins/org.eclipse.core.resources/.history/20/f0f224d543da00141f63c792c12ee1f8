@@ -1,0 +1,79 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JList;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+
+public class AllPharmacies extends JPanel {
+	
+	private int dNum = 10;
+	JList<JRadioButton> list;
+	JRadioButton[] pharmacies;
+	DefaultListModel<JRadioButton> model;
+
+	public AllPharmacies() {
+		this.setLayout(new GridLayout(1, 2));
+		
+		JPanel panel = new JPanel();
+		ButtonGroup bg = new ButtonGroup();
+	    
+	    // JButton addButton = new JButton("Add Element");
+	    // JButton removeButton = new JButton("Remove Element");
+		pharmacies = new JRadioButton[dNum];
+	    for (int i = 0; i < dNum; i++)
+	    {
+	    	pharmacies[i] = new JRadioButton("Pharmacy #" + ( i + 1));
+			pharmacies[i].setVisible(true);
+			bg.add(pharmacies[i]);
+			panel.add(pharmacies[i]);
+	    }
+	    
+	    JScrollPane pane = new JScrollPane(panel);
+	    GroupLayout gl_panel = new GroupLayout(panel);
+	    gl_panel.setHorizontalGroup(
+	    	gl_panel.createParallelGroup(Alignment.LEADING)
+	    		.addGap(0, 206, Short.MAX_VALUE)
+	    );
+	    gl_panel.setVerticalGroup(
+	    	gl_panel.createParallelGroup(Alignment.LEADING)
+	    		.addGap(0, 298, Short.MAX_VALUE)
+	    );
+	    panel.setLayout(gl_panel);
+	    pane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	    pane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+	    /*
+	    addButton.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e) {
+	        model.addElement("Element " + dNum);
+	        dNum++;
+	      }
+	    });
+	    removeButton.addActionListener(new ActionListener() {
+	      public void actionPerformed(ActionEvent e) {
+	        if (model.getSize() > 0)
+	          model.removeElementAt(0);
+	      }
+	    });
+		*/
+	    
+	    JButton btnNewButton = new JButton("New button");
+	    this.add(pane);
+	    this.add(btnNewButton);
+	    // this.add(addButton, BorderLayout.WEST);
+	    // this.add(removeButton, BorderLayout.EAST);
+	}
+	
+}

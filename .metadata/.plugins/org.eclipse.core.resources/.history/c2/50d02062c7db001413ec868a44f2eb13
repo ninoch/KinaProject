@@ -1,0 +1,30 @@
+package graphics;
+
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+@SuppressWarnings("serial")
+public class ReportActivity extends Report {
+
+	public ReportActivity() {
+
+	}
+
+	@Override
+	protected void make_reports() {
+		// TODO Auto-generated method stub
+		rnum = 20;
+		reports = new JRadioButton[rnum];
+		
+		// TODO making message title
+		for(int i = 0; i < rnum; i++)
+		{
+			reports[i] = new JRadioButton("message from patient # " + ( i  + 1));
+			this.add(new DoctorMessage(), "#" + i);
+		}
+		
+	}
+
+}

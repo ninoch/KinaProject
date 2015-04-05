@@ -1,0 +1,17 @@
+package graphics;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+
+@SuppressWarnings("serial")
+public class PatientMessage extends JPanel {
+
+	public PatientMessage() {
+		this.setLayout(null);
+		
+		JLabel label = new JLabel("New label");
+		add(label);
+
+	}
+
+}

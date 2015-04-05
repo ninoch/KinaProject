@@ -1,0 +1,91 @@
+package graphics;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class AddDrugSell extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public AddDrugSell() {
+		this.setLayout(null);
+		
+		JLabel label = new JLabel("\u0634\u0645\u0627\u0631\u0647 \u0646\u0633\u062E\u0647:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(289, 41, 75, 19);
+		label.setVisible(false);
+		this.add(label);
+		
+		JTextField dId = new JTextField();
+		dId.setBounds(162, 58, 202, 19);
+		dId.setVisible(false);
+		this.add(dId);
+		dId.setColumns(10);
+		
+		JButton showDrugs = new JButton("\u0646\u0645\u0627\u06CC\u0634 \u062F\u0627\u0631\u0648\u0647\u0627");
+		showDrugs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(dId.getText().equals("warning"))
+				{
+					notFound.setVisible(true);	
+				}
+				else
+				{
+					for(int i = 0; i < drugNums; i++)
+						drugs[i].setVisible(true);
+					add.setVisible(true);	
+				}
+			}
+		});
+		showDrugs.setBounds(10, 57, 110, 23);
+		showDrugs.setVisible(false);
+		this.add(showDrugs);
+		
+		JLabel notFound = new JLabel("\u0646\u0633\u062E\u0647 \u0645\u0648\u0631\u062F \u0646\u0638\u0631\u060C \u062F\u0631 \u0633\u06CC\u0633\u062A\u0645 \u062B\u0628\u062A \u0646\u0634\u062F\u0647 \u0627\u0633\u062A.");
+		notFound.setForeground(Color.RED);
+		notFound.setBounds(95, 90, 237, 19);
+		notFound.setVisible(false);
+		this.add(notFound);
+		
+		// Here for iterate drugs TODO
+		int drugNums = 3;
+		JCheckBox[] drugs = new JCheckBox[drugNums];
+		for(int i = 0; i < drugNums; i++)
+		{
+			drugs[i] = new JCheckBox("\u062F\u0627\u0631\u0648\u06CC \u0634\u0645\u0627\u0631\u0647" + (i + 1));
+			drugs[i].setBounds(235 , 115 + 25 * i, 97, 23);
+			drugs[i].setVisible(false);
+			this.add(drugs[i]);
+		}
+		
+		JButton add = new JButton("\u062B\u0628\u062A \u0641\u0631\u0648\u0634");
+		add.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				notFound.setVisible(false);	
+				for(int i = 0; i < drugNums; i++)
+					drugs[i].setVisible(false);
+				add.setVisible(false);
+				label.setVisible(false);
+				dId.setVisible(false);
+				showDrugs.setVisible(false);
+				table.setVisible(false);
+				change.setVisible(false);
+				// TODO mark drugs
+			}
+		});
+		add.setBounds(10, 270, 89, 23);
+		add.setVisible(false);
+		contentPane.add(add);
+	
+	}
+
+}

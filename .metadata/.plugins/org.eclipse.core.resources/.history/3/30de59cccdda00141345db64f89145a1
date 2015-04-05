@@ -1,0 +1,72 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+public class Test extends JFrame {
+
+	private JPanel contentPane;
+
+	public Test() {
+		setTitle("\u0641\u0631\u0627\u0645\u0648\u0634\u06CC \u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631");
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JButton show = new JButton("\u0646\u0645\u0627\u06CC\u0634");
+		show.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		show.setBounds(10, 134, 89, 23);
+		contentPane.add(show);
+		
+		JButton back = new JButton("\u0628\u0627\u0632\u06AF\u0634\u062A");
+		back.setBounds(10, 168, 89, 23);
+		contentPane.add(back);
+		
+		JTextField username = new JTextField();
+		username.setBounds(105, 62, 259, 20);
+		contentPane.add(username);
+		username.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u06A9\u0627\u0631\u0628\u0631\u06CC:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(255, 37, 109, 14);
+		contentPane.add(label);
+		
+		JLabel passw = new JLabel("");
+		passw.setBounds(10, 93, 354, 30);
+		contentPane.add(passw);
+		
+		show.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	// if Username is correct, show password
+	        	passw.setText("Your Password Here");
+	        	// else, show error message TODO
+	        }
+	    });
+		
+		back.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	contentPane.setVisible(false);
+	        }
+	    });
+
+	}
+
+}

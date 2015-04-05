@@ -1,0 +1,49 @@
+package graphics;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class AdminProfile extends JPanel {
+	public AdminProfile() {
+		this.setLayout(null);
+		this.setVisible(true);
+		
+		JTable table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, "\u0646\u0627\u0645:"},
+				{null, "\u067E\u0631\u0648\u0627\u0646\u0647 \u062A\u0627\u0633\u06CC\u0633:"},
+				{null, "\u062A\u0644\u0641\u0646:"},
+				{"", "\u0622\u062F\u0631\u0633:"},
+			},
+			new String[] {
+				"", ""
+			}
+		) {
+			boolean[][] edit = new boolean[][] { { true, false}, { false, false}, { true, false}, { true, false} };
+			public boolean isCellEditable(int row, int column) {
+				return edit[row][column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setResizable(false);
+		table.getColumnModel().getColumn(1).setResizable(false);
+		
+		JButton change = new JButton("\u062B\u0628\u062A \u062A\u063A\u06CC\u06CC\u0631\u0627\u062A");
+		change.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO change attributes 
+				DrugProfile.this.setVisible(false);
+			}
+		});
+		change.setBounds(10, 270, 89, 23);
+		this.add(change);
+		table.setBounds(10, 60, 350, 65);
+		this.add(table);
+	}
+
+}

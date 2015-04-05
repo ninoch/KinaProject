@@ -1,0 +1,15 @@
+package graphics;
+
+import java.awt.Dimension;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class ReportActivity extends Report {
+
+	public ReportActivity() {
+		this.setLayout(null);
+		this.setSize(new Dimension(480, 400));
+
+	}
+
+}

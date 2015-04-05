@@ -1,0 +1,102 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.EventQueue;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Admin extends JFrame {
+
+	private JPanel menu;
+	private JPanel content;
+	
+	public Admin() {
+		/*
+		 * setTitle("\u0645\u062F\u06CC\u0631\u06CC\u062A \u062F\u0627\u0631\u0648\u062E\u0627\u0646\u0647");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 390, 340);
+		GridLayout myLayout = new GridLayout(2,1);  
+		this.setLayout(myLayout);  
+		
+		menu = new JPanel();
+		menu.setBounds(0, 0, 390, 30);
+		menu.setLayout(null);
+	
+		JPanel DP = new DrugProfile();
+		JPanel ADS = new AddDrugSell();
+		JPanel pic = new BackGroundImage("C:\\Users\\Ninochika\\workspace\\3\\OOD\\img\\pharmacy.jpg");
+		
+		content = new JPanel (new CardLayout());
+		content.add(pic, "default");
+		content.add(DP, "profile");
+		content.add(ADS, "sell");
+        CardLayout cl = (CardLayout)(content.getLayout());
+        cl.show(content, "default");
+		
+
+        this.add(menu, BorderLayout.PAGE_START);
+        this.add(content, BorderLayout.CENTER);
+		
+		 */
+		setTitle("\u0645\u062F\u06CC\u0631\u06CC\u062A");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 400, 400);
+		GridLayout myLayout = new GridLayout(2,1);  
+		this.setLayout(myLayout);  
+		
+		menu = new JPanel();
+		menu.setBorder(new EmptyBorder(5, 5, 5, 5));
+		menu.setLayout(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 390, 30);
+		menu.add(menuBar);
+		
+		JMenu menu = new JMenu("\u06A9\u0627\u0631\u0628\u0631\u0627\u0646");
+		menuBar.add(menu);
+		
+		JMenuItem drugs = new JMenuItem("\u062F\u0627\u0631\u0648\u062E\u0627\u0646\u0647 \u0647\u0627");
+		menu.add(drugs);
+		
+		JMenuItem patients = new JMenuItem("\u0628\u06CC\u0645\u0627\u0631\u0627\u0646");
+		menu.add(patients);
+		
+		JMenuItem doctors = new JMenuItem("\u067E\u0632\u0634\u06A9\u0627\u0646");
+		menu.add(doctors);
+		
+		JMenu profile = new JMenu("\u0645\u062F\u06CC\u0631\u06CC\u062A");
+		menuBar.add(profile);
+		
+		JMenuItem menuItem_3 = new JMenuItem("\u067E\u0631\u0648\u0641\u0627\u06CC\u0644");
+		menuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		profile.add(menuItem_3);
+		
+		JMenuItem logout = new JMenuItem("\u062E\u0631\u0648\u062C");
+		logout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DrugStore.this.dispose();
+				try {
+					Login frame = new Login();
+					frame.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		profile.add(logout);
+	}
+
+}

@@ -1,0 +1,19 @@
+package graphics;
+
+@SuppressWarnings("serial")
+public class DoctorConsultationsInbox extends Inbox {
+
+	/**
+	 * Create the panel.
+	 */
+	public DoctorConsultationsInbox() {
+
+	}
+
+	@Override
+	protected void make_messages() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,40 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+@SuppressWarnings("serial")
+public abstract class HomePage extends JFrame {
+
+
+	private JPanel menu;
+	private JPanel content;
+	private JPanel pic;
+	private CardLayout cl;
+	
+	public HomePage() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 480);
+		
+		GridLayout myLayout = new GridLayout(2,1);  
+		getContentPane().setLayout(myLayout);  
+		
+		menu = new JPanel();
+		menu.setBorder(new EmptyBorder(5, 5, 5, 5));
+		menu.setBounds(0, 0, 490, 30);
+		menu.setLayout(null);
+		
+
+		pic = new BackGroundImage("C:\\Users\\Ninochika\\workspace\\3\\OOD\\img\\admin.jpg");
+		
+		content = new JPanel (new CardLayout());
+		content.add(pic, "default");
+        cl = (CardLayout)(content.getLayout());
+        cl.show(content, "default");
+	}
+
+}

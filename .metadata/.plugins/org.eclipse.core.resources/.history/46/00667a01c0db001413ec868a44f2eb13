@@ -1,0 +1,16 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class Health extends JPanel {
+
+	public Health() {
+		this.setSize(new Dimension(480, 400));
+		this.setLayout(new CardLayout());
+	}
+
+}

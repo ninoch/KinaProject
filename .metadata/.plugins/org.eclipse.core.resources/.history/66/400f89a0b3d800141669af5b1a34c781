@@ -1,0 +1,74 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.ButtonGroup;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+public class ForgetPass extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField name;
+	private JLabel label_1;
+	private JTextField familyName;
+	private JLabel label_2;
+	private JTextField id;
+	private JLabel label_3;
+	private JTextField tell;
+	/**
+	 * Create the frame.
+	 */
+	public ForgetPass() {
+		setTitle("\u062B\u0628\u062A \u0646\u0627\u0645 \u0628\u06CC\u0645\u0627\u0631");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 390, 240);
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		name = new JTextField();
+		name.setBounds(217, 29, 147, 20);
+		contentPane.add(name);
+		name.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(265, 11, 99, 20);
+		contentPane.add(label);
+		
+		label_1 = new JLabel("\u0646\u0627\u0645 \u062E\u0627\u0646\u0648\u0627\u062F\u06AF\u06CC:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(265, 60, 99, 20);
+		contentPane.add(label_1);
+		
+		familyName = new JTextField();
+		familyName.setColumns(10);
+		familyName.setBounds(217, 79, 147, 20);
+		contentPane.add(familyName);
+		
+		label_2 = new JLabel("\u0634\u0645\u0627\u0631\u0647 \u0628\u06CC\u0645\u0647:");
+		label_2.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_2.setBounds(96, 11, 99, 20);
+		contentPane.add(label_2);
+		
+		id = new JTextField();
+		id.setColumns(10);
+		id.setBounds(48, 29, 147, 20);
+		contentPane.add(id);
+		
+		label_3 = new JLabel("\u062A\u0644\u0641\u0646 \u062A\u0645\u0627\u0633:");
+		label_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_3.setBounds(96, 60, 99, 20);
+		contentPane.add(label_3);
+		
+		tell = new JTextField();
+		tell.setColumns(10);
+		tell.setBounds(48, 79, 147, 20);
+		contentPane.add(tell);
+	}
+}

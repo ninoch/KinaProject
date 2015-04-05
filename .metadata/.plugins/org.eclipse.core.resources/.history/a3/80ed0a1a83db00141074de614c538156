@@ -1,0 +1,14 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public class PatientMessage extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public PatientMessage() {
+
+	}
+
+}

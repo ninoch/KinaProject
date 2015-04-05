@@ -1,0 +1,188 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JSeparator;
+import javax.swing.JSlider;
+import javax.swing.JEditorPane;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+
+import java.awt.Component;
+
+import javax.swing.Box;
+
+import net.miginfocom.swing.MigLayout;
+
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+
+import java.awt.FlowLayout;
+
+import javax.swing.BoxLayout;
+import javax.swing.SwingConstants;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+
+import javax.swing.event.MenuListener;
+import javax.swing.event.MenuKeyListener;
+import javax.swing.event.MenuKeyEvent;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import java.awt.Color;
+import javax.swing.JCheckBox;
+
+public class DrugStore extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+	private JButton change;
+	private JTextField dId;
+	private JCheckBox[] drugs;
+	private JButton add;
+	private JLabel notFound;
+	private JButton showDrugs;
+	private JLabel label;
+
+	public DrugStore() {
+		setTitle("\u0645\u062F\u06CC\u0631\u06CC\u062A \u062F\u0627\u0631\u0648\u062E\u0627\u0646\u0647");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 390, 342);
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 390, 30);
+		contentPane.add(menuBar);
+		
+		JMenu manage = new JMenu("\u0645\u062F\u06CC\u0631\u06CC\u062A");
+		manage.setHorizontalAlignment(SwingConstants.RIGHT);
+		menuBar.add(manage);
+		
+		JMenuItem profile = new JMenuItem("\u067E\u0631\u0648\u0641\u0627\u06CC\u0644");
+		profile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				table.setVisible(true);
+				change.setVisible(true);
+			}
+		});
+		
+		manage.add(profile);
+		
+		JMenuItem sell = new JMenuItem("\u062B\u0628\u062A \u0641\u0631\u0648\u0634 \u062F\u0627\u0631\u0648");
+		sell.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				table.setVisible(false);
+				change.setVisible(false);
+				
+				label.setVisible(true);
+				dId.setVisible(true);
+				showDrugs.setVisible(true);
+				
+				for(int i = 0; i < drugNums; i++)
+					drugs[i].setVisible(true);
+				private JPanel contentPane;
+				private JTable table;
+				private JButton change;
+				private JTextField dId;
+				private JCheckBox[] drugs;
+				private JButton add;
+				private JLabel notFound;
+				private JButton showDrugs;
+				private JLabel label;
+				
+			}
+		});
+		manage.add(sell);
+		
+		JMenuItem logout = new JMenuItem("\u062E\u0631\u0648\u062C");
+		logout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		manage.add(logout);
+		
+		label = new JLabel("\u0634\u0645\u0627\u0631\u0647 \u0646\u0633\u062E\u0647:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(289, 41, 75, 19);
+		label.setVisible(false);
+		contentPane.add(label);
+		
+		dId = new JTextField();
+		dId.setBounds(162, 58, 202, 19);
+		dId.setVisible(false);
+		contentPane.add(dId);
+		dId.setColumns(10);
+		
+		showDrugs = new JButton("\u0646\u0645\u0627\u06CC\u0634 \u062F\u0627\u0631\u0648\u0647\u0627");
+		showDrugs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		showDrugs.setBounds(10, 57, 110, 23);
+		showDrugs.setVisible(false);
+		contentPane.add(showDrugs);
+		
+		notFound = new JLabel("\u0646\u0633\u062E\u0647 \u0645\u0648\u0631\u062F \u0646\u0638\u0631\u060C \u062F\u0631 \u0633\u06CC\u0633\u062A\u0645 \u062B\u0628\u062A \u0646\u0634\u062F\u0647 \u0627\u0633\u062A.");
+		notFound.setForeground(Color.RED);
+		notFound.setBounds(95, 90, 237, 19);
+		notFound.setVisible(false);
+		contentPane.add(notFound);
+		
+		// Here for iterate drugs TODO
+		drugs = new JCheckBox[3];
+		for(int i = 0; i < 3; i++)
+		{
+			drugs[i] = new JCheckBox("\u062F\u0627\u0631\u0648\u06CC \u0634\u0645\u0627\u0631\u0647" + (i + 1));
+			drugs[i].setBounds(235 , 115 + 25 * i, 97, 23);
+			drugs[i].setVisible(false);
+			contentPane.add(drugs[i]);
+		}
+		
+		add = new JButton("\u062B\u0628\u062A \u0641\u0631\u0648\u0634");
+		add.setBounds(10, 270, 89, 23);
+		add.setVisible(false);
+		contentPane.add(add);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, "\u0646\u0627\u0645:"},
+				{null, "\u067E\u0631\u0648\u0627\u0646\u0647 \u062A\u0627\u0633\u06CC\u0633:"},
+				{null, "\u062A\u0644\u0641\u0646:"},
+				{"", "\u0622\u062F\u0631\u0633:"},
+			},
+			new String[] {
+				"", ""
+			}
+		) {
+			boolean[][] edit = new boolean[][] { { true, false}, { false, false}, { true, false}, { true, false} };
+			public boolean isCellEditable(int row, int column) {
+				return edit[row][column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setResizable(false);
+		table.getColumnModel().getColumn(1).setResizable(false);
+		table.setBounds(10, 60, 350, 65);
+		table.setVisible(false);
+		contentPane.add(table);
+		
+		change = new JButton("\u062B\u0628\u062A \u062A\u063A\u06CC\u06CC\u0631\u0627\u062A");
+		change.setBounds(10, 270, 89, 23);
+		change.setVisible(false);
+		contentPane.add(change);
+	}
+}

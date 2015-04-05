@@ -1,0 +1,14 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public class ActivityReport extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public ActivityReport() {
+
+	}
+
+}

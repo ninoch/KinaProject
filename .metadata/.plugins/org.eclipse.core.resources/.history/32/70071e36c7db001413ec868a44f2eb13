@@ -1,0 +1,14 @@
+package graphics;
+
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class ReportHealth extends Report {
+
+	public ReportHealth() {
+
+	}
+
+}

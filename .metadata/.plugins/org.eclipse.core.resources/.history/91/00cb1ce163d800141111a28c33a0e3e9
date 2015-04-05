@@ -1,0 +1,181 @@
+package graphics;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JPasswordField;
+import javax.swing.JCheckBox;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+public class Login extends JFrame {
+	private JPanel contentPane;
+	private JTextField username;
+	private JPasswordField passw;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Login frame = new Login();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Login() {
+		setTitle("\u0648\u0631\u0648\u062F");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 390, 240);
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JButton login = new JButton("\u0648\u0631\u0648\u062F");
+		login.setBounds(28, 159, 89, 23);
+		contentPane.add(login);
+		
+		JButton forgetPass = new JButton("\u0641\u0631\u0627\u0645\u0648\u0634\u06CC \u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631");
+		forgetPass.setBounds(127, 159, 127, 23);
+		contentPane.add(forgetPass);
+		
+		JButton signup = new JButton("\u062B\u0628\u062A \u0646\u0627\u0645");
+		signup.setBounds(264, 159, 89, 23);
+		contentPane.add(signup);
+		
+		username = new JTextField();
+		username.setToolTipText("\u0646\u0627\u0645 \u06A9\u0627\u0631\u0628\u0631\u06CC \u062E\u0648\u062F \u0631\u0627 \u0648\u0627\u0631\u062F \u06A9\u0646\u06CC\u062F");
+		username.setBounds(164, 33, 189, 20);
+		contentPane.add(username);
+		username.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u06A9\u0627\u0631\u0628\u0631\u06CC:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(264, 11, 89, 11);
+		contentPane.add(label);
+		
+		JLabel label_1 = new JLabel("\u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(264, 61, 89, 11);
+		contentPane.add(label_1);
+		
+		passw = new JPasswordField();
+		passw.setBounds(164, 83, 189, 20);
+		contentPane.add(passw);
+		
+		JCheckBox showPass = new JCheckBox("\u0646\u0645\u0627\u06CC\u0634 \u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631");
+		showPass.setBounds(164, 110, 189, 23);
+		contentPane.add(showPass);
+		
+		ChangeListener changeListener = new ChangeListener() {
+			public void stateChanged(ChangeEvent changeEvent) {
+				JCheckBox showPass = (JCheckBox) changeEvent.getSource();
+				if (showPass.isSelected())
+		            passw.setEchoChar((char)0);
+			    else
+			    	passw.setEchoChar('*');
+			}
+		};
+	    showPass.addChangeListener(changeListener);
+	    
+	    login.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	contentPane.setVisible(false);
+	        	try {
+					Login frame = new Login();
+					frame.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+	        }
+	    });
+	    
+	    forgetPass.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	contentPane.setVisible(false);
+	        	try {
+	        		setTitle("فراموشی کلمه عبور");
+					ForgetPass();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+	        }
+	    });
+	}
+	
+	private void ForgetPass() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 390, 240);
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JButton show = new JButton("\u0646\u0645\u0627\u06CC\u0634");
+		show.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		show.setBounds(10, 134, 89, 23);
+		contentPane.add(show);
+		
+		JButton back = new JButton("\u0628\u0627\u0632\u06AF\u0634\u062A");
+		back.setBounds(10, 168, 89, 23);
+		contentPane.add(back);
+		
+		username = new JTextField();
+		username.setBounds(105, 62, 259, 20);
+		contentPane.add(username);
+		username.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u06A9\u0627\u0631\u0628\u0631\u06CC:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(255, 37, 109, 14);
+		contentPane.add(label);
+		
+		JLabel passw = new JLabel("");
+		passw.setBounds(10, 93, 354, 30);
+		contentPane.add(passw);
+		
+		show.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	passw.setText("Your Password Here");
+	        }
+	    });
+		
+		back.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	contentPane.setVisible(false);
+	        	try {
+					Login frame = new Login();
+					frame.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+	        }
+	    });
+	}
+
+}

@@ -1,0 +1,25 @@
+package graphics;
+
+import javax.swing.JPanel;
+import javax.swing.JList;
+import javax.swing.JLabel;
+
+public class AllPharmacies extends JPanel {
+	
+	private int dNum = 3;
+	JLabel[] pharmacies;
+	public AllPharmacies() {
+		
+		JList list = new JList();
+		add(list);
+		
+		pharmacies = new JLabel[dNum];
+		for(int i = 0; i < dNum; i++)
+		{
+			list.add(label);
+		}
+		
+
+	}
+
+}

@@ -1,0 +1,9 @@
+package graphics;
+
+import javax.swing.JFrame;
+
+@SuppressWarnings("serial")
+public class Test extends JFrame {
+	public Test() {
+	}
+}

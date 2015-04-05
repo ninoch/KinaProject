@@ -1,0 +1,11 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+public class AllPatientsDoctors extends JPanel {
+	
+	public AllPatientsDoctors() {
+
+	}
+
+}

@@ -1,0 +1,27 @@
+package graphics;
+
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+@SuppressWarnings("serial")
+public class PatientMessage extends JPanel {
+
+	public PatientMessage() {
+		this.setLayout(null);
+		this.setSize(new Dimension(480, 400));
+		
+		JLabel label = new JLabel("\u0641\u0631\u0633\u062A\u0646\u062F\u0647: \u062F\u06A9\u062A\u0631");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(352, 11, 74, 14);
+		add(label);
+		
+		JLabel doctorName = new JLabel("");
+		doctorName.setBounds(296, 11, 46, 14);
+		add(doctorName);
+
+	}
+
+}

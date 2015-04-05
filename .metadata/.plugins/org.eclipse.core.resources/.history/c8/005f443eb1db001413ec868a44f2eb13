@@ -1,0 +1,264 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.Color;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+public class Test extends JFrame {
+
+	  private JFrame frame = new JFrame("Table Demo");
+	  private String[] columnNames = { "String", "Integer", "Float", "" };
+	  private Object[][] data = { { "Dummy", new Integer(12), new Float(12.15), "Consulter" } };
+	  private TableModel model = new DefaultTableModel(data, columnNames)
+	  {
+	    private static final long serialVersionUID = 1L;
+
+	    public boolean isCellEditable(int row, int column)
+	    {
+	      return column == 3;
+	    }
+	  };
+	  private JTable table = new JTable(model);
+
+	  public TableWithButtonDemo()
+	  {
+	    table.getColumnModel().getColumn(3).setCellRenderer(new ClientsTableButtonRenderer());
+	    table.getColumnModel().getColumn(3).setCellEditor(new ClientsTableRenderer(new JCheckBox()));
+	    table.setPreferredScrollableViewportSize(table.getPreferredSize());
+	    table.setShowHorizontalLines(true);
+	    table.setShowVerticalLines(false);
+
+	    JScrollPane scroll = new JScrollPane(table);
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    frame.add(scroll);
+	    frame.pack();
+	    frame.setLocation(150, 150);
+	    frame.setVisible(true);
+	  }
+
+	  public static void main(String[] args) throws Exception
+	  {
+	    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	    EventQueue.invokeLater(new Runnable()
+	    {
+	      public void run()
+	      {
+	        new TableWithButtonDemo();
+	      }
+	    });
+	  }
+
+	  class ClientsTableButtonRenderer extends JButton implements TableCellRenderer
+	  {
+	    public ClientsTableButtonRenderer()
+	    {
+	      setOpaque(true);
+	    }
+
+	    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+	    {
+	      setForeground(Color.black);
+	      setBackground(UIManager.getColor("Button.background"));
+	      setText((value == null) ? "" : value.toString());
+	      return this;
+	    }
+	  }
+	  public class ClientsTableRenderer extends DefaultCellEditor
+	  {
+	    private JButton button;
+	    private String label;
+	    private boolean clicked;
+	    private int row, col;
+	    private JTable table;
+
+	    public ClientsTableRenderer(JCheckBox checkBox)
+	    {
+	      super(checkBox);
+	      button = new JButton();
+	      button.setOpaque(true);
+	      button.addActionListener(new ActionListener()
+	      {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	          fireEditingStopped();
+	        }
+	      });
+	    }
+	    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
+	    {
+	      this.table = table;
+	      this.row = row;
+	      this.col = column;
+
+	      button.setForeground(Color.black);
+	      button.setBackground(UIManager.getColor("Button.background"));
+	      label = (value == null) ? "" : value.toString();
+	      button.setText(label);
+	      clicked = true;
+	      return button;
+	    }
+	    public Object getCellEditorValue()
+	    {
+	      if (clicked)
+	      {
+	        JOptionPane.showMessageDialog(button, "Column with Value: "+table.getValueAt(row, 1) + " -  Clicked!");
+	      }
+	      clicked = false;
+	      return new String(label);
+	    }
+
+	    public boolean stopCellEditing()
+	    {
+	      clicked = false;
+	      return super.stopCellEditing();
+	    }
+
+	    protected void fireEditingStopped()
+	    {
+	      super.fireEditingStopped();
+	    }
+	  }
+
+	}
+}
+/*
+	private JPanel contentPane;
+	private JTextField answer;
+	private int state = 0;
+	private JTable table;
+
+	public Test() {
+		setTitle("\u0641\u0631\u0627\u0645\u0648\u0634\u06CC \u06A9\u0644\u0645\u0647 \u0639\u0628\u0648\u0631");
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JButton show = new JButton("\u0646\u0645\u0627\u06CC\u0634");
+		show.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		show.setBounds(109, 168, 89, 23);
+		contentPane.add(show);
+		
+		JButton back = new JButton("\u0628\u0627\u0632\u06AF\u0634\u062A");
+		back.setBounds(14, 168, 89, 23);
+		contentPane.add(back);
+		
+		JTextField username = new JTextField();
+		username.setBounds(109, 25, 259, 20);
+		contentPane.add(username);
+		username.setColumns(10);
+		
+		JLabel label = new JLabel("\u0646\u0627\u0645 \u06A9\u0627\u0631\u0628\u0631\u06CC:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(255, 11, 109, 14);
+		label.setVisible(false);
+		contentPane.add(label);
+		
+		JLabel passw = new JLabel("");
+		passw.setHorizontalAlignment(SwingConstants.LEFT);
+		passw.setBounds(14, 137, 354, 20);
+		contentPane.add(passw);
+		
+		JLabel question = new JLabel("\u0633\u0648\u0627\u0644 \u0627\u0645\u0646\u06CC\u062A\u06CC \u0634\u0645\u0627\u061F");
+		question.setHorizontalAlignment(SwingConstants.RIGHT);
+		question.setBounds(14, 56, 354, 14);
+		question.setVisible(false);
+		contentPane.add(question);
+		
+		JLabel label_1 = new JLabel("\u067E\u0627\u0633\u062E \u0627\u0645\u0646\u06CC\u062A\u06CC:");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		label_1.setBounds(259, 81, 109, 14);
+		label_1.setVisible(false);
+		contentPane.add(label_1);
+		
+		answer = new JTextField();
+		answer.setColumns(10);
+		answer.setBounds(109, 106, 259, 20);
+		answer.setVisible(false);
+		contentPane.add(answer);
+		
+		JLabel warning = new JLabel("\u062E\u0637\u0627!");
+		warning.setForeground(Color.RED);
+		warning.setBounds(208, 172, 159, 14);
+		warning.setVisible(false);
+		contentPane.add(warning);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"New column", "New column"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, true
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		table.getColumnModel().getColumn(0).setResizable(false);
+		table.setBounds(286, 152, 1, 1);
+		contentPane.add(table);
+		
+		show.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	    		warning.setVisible(false);
+	        	if(state == 0)
+	        	{
+	        		if(username.getText().equals("warning"))
+	        			warning.setVisible(true);
+	        		else {
+	        			question.setVisible(true);
+	        			label_1.setVisible(true);
+	        			answer.setVisible(true);
+	        			state ++;
+	        		}
+	        	}
+	        	else if(state == 1)
+	        	{
+	        		if(answer.getText().equals("warning"))
+	        			warning.setVisible(true);
+	        		else
+	        		{
+	        			passw.setText("Your Password Here");
+	        			passw.setVisible(true);
+	        			// else, show error message TODO
+	        			state = 0;
+	        		}
+	        	}
+	        	
+	        }
+	    });
+		
+		back.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	contentPane.setVisible(false);
+	        }
+	    });
+
+	}
+}
+*/

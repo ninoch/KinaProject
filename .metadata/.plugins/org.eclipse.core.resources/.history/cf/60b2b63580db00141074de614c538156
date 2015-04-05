@@ -1,0 +1,94 @@
+package graphics;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+@SuppressWarnings("serial")
+public class Patient extends Base {
+	public Patient() {
+		setTitle("\u0645\u062F\u06CC\u0631\u06CC\u062A \u0628\u06CC\u0645\u0627\u0631");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel pic = new BackGroundImage("C:\\Users\\Ninochika\\workspace\\3\\OOD\\img\\patient.gif");
+		JPanel pp = new PatientProfile();
+		
+		content.add(pic, "default");
+		content.add(pp, "profile");
+		
+		// Making Patient menu
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 490, 30);
+		menu.add(menuBar);
+		
+		JMenu users = new JMenu("\u062F\u0631\u0645\u0627\u0646\u06CC");
+		menuBar.add(users);
+		
+		JMenuItem doctors = new JMenuItem("\u067E\u0632\u0634\u06A9\u0627\u0646");
+		doctors.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cl.show(content, "phars");
+			}
+		});
+		users.add(doctors);
+		
+		JMenuItem activity = new JMenuItem("\u062B\u0628\u062A \u0641\u0639\u0627\u0644\u06CC\u062A \u0628\u062F\u0646\u06CC");
+		users.add(activity);
+		
+		JMenu menu = new JMenu("\u06AF\u0632\u0627\u0631\u0634 \u06AF\u06CC\u0631\u06CC");
+		users.add(menu);
+		
+		JMenuItem activityReport = new JMenuItem("\u0641\u0639\u0627\u0644\u06CC\u062A \u0628\u062F\u0646\u06CC");
+		menu.add(activityReport);
+		
+		JMenuItem healthReport = new JMenuItem("\u0648\u0636\u0639\u06CC\u062A \u062C\u0633\u0645\u0627\u0646\u06CC");
+		menu.add(healthReport);
+		
+		JMenuItem illnessReport = new JMenuItem("\u0633\u0627\u0628\u0642\u0647 \u0628\u06CC\u0645\u0627\u0631\u06CC \u0648 \u062F\u0627\u0631\u0648");
+		menu.add(illnessReport);
+		
+		JMenu manage = new JMenu("\u0645\u062F\u06CC\u0631\u06CC\u062A");
+		menuBar.add(manage);
+		
+		JMenuItem profile = new JMenuItem("\u067E\u0631\u0648\u0641\u0627\u06CC\u0644");
+		profile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cl.show(content, "profile");
+			}
+		});
+		manage.add(profile);
+		
+		JMenuItem logout = new JMenuItem("\u062E\u0631\u0648\u062C");
+		logout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Patient.this.dispose();
+				try {
+					Login frame = new Login();
+					frame.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		JMenuItem inbox = new JMenuItem("\u0635\u0646\u062F\u0648\u0642 \u062F\u0631\u06CC\u0627\u0641\u062A");
+		inbox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		manage.add(inbox);
+		
+		JMenuItem menuItem = new JMenuItem("\u0627\u0631\u0633\u0627\u0644 \u067E\u06CC\u0627\u0645");
+		manage.add(menuItem);
+		manage.add(logout);
+	}
+
+}

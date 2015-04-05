@@ -1,0 +1,13 @@
+package graphics;
+
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class Health extends JPanel {
+
+	public Health() {
+		this.setLayout(null);
+		this.setSize();
+	}
+
+}

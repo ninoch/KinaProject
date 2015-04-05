@@ -1,0 +1,70 @@
+package graphics;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.SwingConstants;
+
+@SuppressWarnings("serial")
+public class Signup extends JPanel {
+	public Signup() {
+		this.setLayout(null);
+		
+		JButton select = new JButton("\u0634\u0631\u0648\u0639 \u062B\u0628\u062A \u0646\u0627\u0645");
+		select.setBounds(10, 134, 109, 23);
+		this.add(select);
+		
+		JButton back = new JButton("\u0628\u0627\u0632\u06AF\u0634\u062A");
+		back.setBounds(10, 168, 109, 23);
+		this.add(back);
+		
+		JLabel label = new JLabel("\u062B\u0628\u062A \u0646\u0627\u0645 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646:");
+		label.setHorizontalAlignment(SwingConstants.RIGHT);
+		label.setBounds(255, 11, 109, 14);
+		this.add(label);
+		
+
+		final ButtonGroup buttonGroup = new ButtonGroup();
+		JRadioButton patient = new JRadioButton("\u0628\u06CC\u0645\u0627\u0631");
+		buttonGroup.add(patient);
+		patient.setSelected(true);
+		patient.setBounds(255, 30, 109, 23);
+		this.add(patient);
+		
+		JRadioButton drug = new JRadioButton("\u062F\u0627\u0631\u0648\u062E\u0627\u0646\u0647");
+		buttonGroup.add(drug);
+		drug.setBounds(255, 58, 109, 23);
+		this.add(drug);
+		
+		JRadioButton doctor = new JRadioButton("\u067E\u0632\u0634\u06A9");
+		buttonGroup.add(doctor);
+		doctor.setBounds(255, 84, 109, 23);
+		this.add(doctor);
+		/*
+		select.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+	        	Signup.this.setVisible(false);
+				if(patient.isSelected())
+					patiSignUp();
+				else if(doctor.isSelected())
+					doctorSignUp();
+				else if(drug.isSelected())
+					drugSignUp();
+			}
+		});
+		back.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Signup.this.setVisible(false);
+				mainPage();
+			}
+		});
+		
+		*/
+	}
+
+}

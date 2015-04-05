@@ -1,0 +1,79 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JList;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
+@SuppressWarnings("serial")
+public class AllPharmacies extends JPanel {
+	
+	private int dNum = 10;
+	JList<JRadioButton> list;
+	JRadioButton[] pharmacies;
+	DefaultListModel<JRadioButton> model;
+
+	public AllPharmacies() {
+		
+		JPanel select = new JPanel();
+		
+		this.setLayout(new CardLayout());
+		this.add(select, "default");
+
+		// TODO for all pharmacies
+		pharmacies = new JRadioButton[dNum];
+		for(int i = 0; i < dNum; i++)
+		{
+	    	pharmacies[i] = new JRadioButton("Pharmacy #" + ( i + 1));
+			this.add(new DrugProfile(), "#" + i);
+		}
+        CardLayout cl = (CardLayout)(this.getLayout());
+        cl.show(this, "default");
+		
+		// Make Select
+		select.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		ButtonGroup bg = new ButtonGroup();
+	    
+	    for (int i = 0; i < dNum; i++)
+	    {
+			bg.add(pharmacies[i]);
+			panel.add(pharmacies[i]);
+	    }
+	    if(dNum > 0)
+	    	pharmacies[0].setSelected(true);
+	    
+	    JScrollPane pane = new JScrollPane(panel);
+	    panel.setLayout(new GridLayout(dNum, 1));
+	    pane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	    pane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+	    
+	    JButton btnNewButton = new JButton("New button");
+	    btnNewButton.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		int ind = 0;
+	    		for(int i = 1; i < dNum; i++)
+	    			if(pharmacies[i].isSelected())
+	    			{
+	    				ind = i;
+	    				break;
+	    			}
+	    		// TODO
+	    		cl.show(AllPharmacies.this, "#" + ind);
+	    	}
+	    });
+	    select.add(pane);
+	    select.add(btnNewButton);
+	}
+	
+}

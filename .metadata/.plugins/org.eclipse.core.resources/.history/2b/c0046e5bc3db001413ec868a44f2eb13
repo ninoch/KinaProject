@@ -1,0 +1,15 @@
+package graphics;
+
+import java.awt.Dimension;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class Illness extends JPanel {
+
+	public Illness() {
+		this.setSize(new Dimension(480, 400));
+		this.setLayout(null);
+
+	}
+
+}

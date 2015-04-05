@@ -1,0 +1,36 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JList;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
+@SuppressWarnings("serial")
+public class AllPharmacies extends JPanel {
+	
+
+	public AllPharmacies() {
+
+	}
+	
+	{
+		users = new JRadioButton[uNum];
+		for(int i = 0; i < uNum; i++)
+		{
+	    	users[i] = new JRadioButton("users #" + ( i + 1));
+			this.add(new DrugProfile(), "#" + i);
+		}
+        CardLayout cl = (CardLayout)(this.getLayout());
+        cl.show(this, "default");
+	}
+	
+}

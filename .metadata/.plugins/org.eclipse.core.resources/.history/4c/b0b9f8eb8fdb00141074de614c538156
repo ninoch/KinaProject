@@ -1,0 +1,17 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class ReportActivity extends JPanel {
+
+	public ReportActivity() {
+		this.setLayout(null);
+		this.setSize(new Dimension(480, 400));
+
+	}
+
+}

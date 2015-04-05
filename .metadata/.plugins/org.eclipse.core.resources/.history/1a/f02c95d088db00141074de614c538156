@@ -1,0 +1,21 @@
+package graphics;
+
+import java.awt.CardLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+
+@SuppressWarnings("serial")
+public class PatientSelectDoctor extends JPanel {
+
+	public PatientSelectDoctor() {
+		this.setLayout(new CardLayout());
+		this.setSize(new Dimension(480, 400));
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		add(lblNewLabel, "name_8750932050219");
+
+	}
+
+}
